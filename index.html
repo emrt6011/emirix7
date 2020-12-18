@@ -1,15 +1,23 @@
-<!DOCTYPE html>
-<html>
+<div class="dinamik-background"></div>
 
-<head>
-    <title> emirix7 </title>
-</head>
+body,html{
+div.dinamik-background{
+    background:url('https://www.adobewordpress.com/duvar-kagitlari/wallpaper-37.jpg') -25px -50px;
+    background-size: calc(100% + 50px);
+    width: 1280px;
+    height: 720px;
+}
 
-<body>
- 
-    <h1> website yapıyom </h1>
-    <p>  ilk sayfa       </p>
-    
-</body>
 
-</html>
+$(document).ready(function() {
+    var seviye = 25;
+    var yukseklik = seviye / $(window).height();
+    var genislik = seviye / $(window).width();
+    $("body").mousemove(function(e){
+        var sayfaX = e.pageX - ($(window).width() / 2);
+        var sayfaY = e.pageY - ($(window).height() / 2);
+        var yenidegerX = genislik * sayfaX * -1 - 25;
+        var yenidegerY = yukseklik * sayfaY * -1 - 50;
+        $('div.dinamik-background').css("background-position", yenidegerX+"px     "+yenidegerY+"px");
+    });
+});
